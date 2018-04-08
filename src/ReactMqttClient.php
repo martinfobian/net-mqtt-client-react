@@ -543,9 +543,7 @@ class ReactMqttClient extends EventEmitter
 
         if ($flow !== null) {
             if ($flow->isFinished()) {
-                $this->loop->nextTick(function () use ($flow) {
-                    $this->finishFlow($flow);
-                });
+                $this->finishFlow($flow);
             } else {
                 $this->receivingFlows[] = $flow;
             }
@@ -614,9 +612,7 @@ class ReactMqttClient extends EventEmitter
                 $this->handleSend();
             }
         } else {
-            $this->loop->nextTick(function () use ($internalFlow) {
-                $this->finishFlow($internalFlow);
-            });
+            $this->finishFlow($internalFlow);
         }
 
         return $deferred->promise();
@@ -647,9 +643,7 @@ class ReactMqttClient extends EventEmitter
                 $this->handleSend();
             }
         } elseif ($flow->isFinished()) {
-            $this->loop->nextTick(function () use ($flow) {
-                $this->finishFlow($flow);
-            });
+            $this->finishFlow($flow);
         }
     }
 
